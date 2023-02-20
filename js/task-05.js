@@ -1,14 +1,21 @@
 const spanElement = document.querySelector('#name-output');
 const inputElement = document.querySelector('#name-input');
 
-const handelInput = event => {
+const handleInput = event => {
   let resultEvent = event.currentTarget.value;
 
-  if (resultEvent === false) {
+  if (resultEvent === '') {
     spanElement.textContent = 'Anonymous';
   } else {
     spanElement.textContent = resultEvent;
   }
 };
 
-inputElement.addEventListener('input', handelInput);
+const handleBlur = event => {
+  if (event.currentTarget.value === '') {
+    spanElement.textContent = 'Anonymous';
+  }
+};
+
+inputElement.addEventListener('input', handleInput);
+inputElement.addEventListener('blur', handleBlur);

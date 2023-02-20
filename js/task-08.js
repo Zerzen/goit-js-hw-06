@@ -2,7 +2,7 @@ const formElement = document.querySelector('.login-form');
 const inputEmailElement = document.querySelector('[type="email"]');
 const inputPasswordElement = document.querySelector('[type="password"]');
 
-let isFullInputs = true;
+let isFullInputs;
 
 function onFormSubmit(event) {
   event.preventDefault();
@@ -10,11 +10,12 @@ function onFormSubmit(event) {
 
   for (let i = 0; i < inputsArray.length; i += 1) {
     const element = inputsArray[i];
-    console.log(element);
-    if (element.value === '') {
-      alert('выводи alert с предупреждением о том, что все поля должны быть заполнены.');
+    if (element.type !== 'submit' && element.value === '') {
+      alert('предупреждением о том, что все поля должны быть заполнены.');
       isFullInputs = false;
       break;
+    } else {
+      isFullInputs = true;
     }
   }
 
